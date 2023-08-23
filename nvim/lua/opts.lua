@@ -86,3 +86,9 @@ vim.lsp.util.apply_text_document_edit = function(text_document_edit, index, offs
 
   vim.lsp.util.apply_text_edits(text_document_edit.edits, bufnr, offset_encoding)
 end
+
+-- Folding settings for ufo
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

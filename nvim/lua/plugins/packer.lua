@@ -42,6 +42,11 @@ require('packer').startup(function(use)
     after = "nvim-cmp",
   }
 
+  use {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async'
+  }
+
   -- filesystem navigation & icons
   use {
     'kyazdani42/nvim-tree.lua',
@@ -251,7 +256,6 @@ require('packer').startup(function(use)
       require("notify").setup({
         background_colour = "#000000",
       })
-
     end }
 
   -- TODO: REMOVE LATER
