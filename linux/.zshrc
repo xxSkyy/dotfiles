@@ -40,6 +40,3 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-
-# Godot 4 bin location for Godot-Rust
-export GODOT4_BIN='/run/media/sky/Development/GameDev/Godot/Godot4/Godot_v4.0-beta4_linux.x86_64' 
