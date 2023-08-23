@@ -1,0 +1,4 @@
+plugin/
+plugin
+db_ui/
+.luarc.json
