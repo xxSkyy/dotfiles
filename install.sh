@@ -1,4 +1,5 @@
 #!/bin/bash
+#CODE FROM INTERNET
 RED=`tput setaf 1`
 GREEN=`tput setaf 2`
 RESET=`tput sgr0`
@@ -68,6 +69,7 @@ custom_link() {
   echo "Created a symlink $symlink_loc -> $file_loc"
   return 0
 }
+#####################
 
 common_links(){
   custom_link "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig"
