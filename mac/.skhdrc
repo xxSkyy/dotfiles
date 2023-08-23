@@ -1,0 +1,72 @@
+# focus window
+lalt - h : yabai -m window --focus west
+lalt - j : yabai -m window --focus south
+lalt - k : yabai -m window --focus north
+lalt - l : yabai -m window --focus east
+
+# swap managed window
+shift + lalt - h : yabai -m window --swap west
+shift + lalt - j : yabai -m window --swap south
+shift + lalt - k : yabai -m window --swap north
+shift + lalt - l : yabai -m window --swap east
+
+# move managed window
+shift + lalt + ctrl - h : yabai -m window --warp west
+shift + lalt + ctrl - j : yabai -m window --warp south
+shift + lalt + ctrl - k : yabai -m window --warp north
+shift + lalt + ctrl - l : yabai -m window --warp east
+
+# resize managed window
+lalt - u : yabai -m window west --resize right:-60:0 2> /dev/null || yabai -m window --resize right:-60:0
+lalt - i : yabai -m window north --resize bottom:0:60 2> /dev/null || yabai -m window --resize bottom:0:60
+lalt - o : yabai -m window south --resize top:0:-60 2> /dev/null || yabai -m window --resize top:0:-60
+lalt - p : yabai -m window east --resize left:60:0 2> /dev/null || yabai -m window --resize left:60:0
+
+# rotate tree
+lalt - r : yabai -m space --rotate 90
+
+# toggle window fullscreen zoom
+lalt - f : yabai -m window --toggle zoom-fullscreen
+
+# lalt - s : yabai -m window --toggle
+lalt - s : yabai -m window --toggle sticky;\
+          yabai -m window --toggle topmost;\
+          yabai -m window --toggle pip
+
+# toggle padding and gap
+lalt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# float / unfloat window and center on screen
+lalt - t : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
+
+# toggle window split type
+lalt - e : yabai -m window --toggle split
+
+# balance size of windows
+shift + lalt - 0 : yabai -m space --balance
+
+# move window and focus desktop
+shift + lalt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + lalt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + lalt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + lalt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + lalt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + lalt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + lalt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + lalt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+shift + lalt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + lalt - n : yabai -m space --create && \
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
+
+# fast focus desktop
+lalt - tab : yabai -m space --focus recent
+
+# send window to monitor and follow focus
+shift + lalt - n : yabai -m window --display next; yabai -m display --focus next
+shift + lalt - p : yabai -m window --display previous; yabai -m display --focus previous

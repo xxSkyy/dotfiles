@@ -83,6 +83,8 @@ linux_links(){
 
 mac_links(){
   custom_link "$HOME/.dotfiles/mac/.zshrc" "$HOME/.zshrc"
+  custom_link "$HOME/.dotfiles/mac/.yabairc" "$HOME/.yabairc"
+  custom_link "$HOME/.dotfiles/mac/.skhdrc" "$HOME/.skhdrc"
 }
 
 print_success() {
