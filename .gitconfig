@@ -1,0 +1,10 @@
+[user]
+	email = 9327767-xxSkyy@users.noreply.gitlab.com
+	name = SKY
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[push]
+	autoSetupRemote = true
