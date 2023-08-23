@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # Themes list: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="zhann"
@@ -11,6 +10,7 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+source $ZSH/oh-my-zsh.sh
 
 # Starship - info bar at top
 eval "$(starship init zsh)"
