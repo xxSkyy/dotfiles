@@ -1,6 +1,6 @@
 [user]
 	email = 9327767-xxSkyy@users.noreply.gitlab.com
-	name = SKY
+	name = S K Y
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -8,3 +8,9 @@
 	smudge = git-lfs smudge -- %f
 [push]
 	autoSetupRemote = true
+[color]
+	ui = true
+[core]
+	editor = nvim --wait
+[init]
+	defaultBranch = master
