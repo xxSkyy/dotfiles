@@ -73,6 +73,7 @@ custom_link() {
 
 common_links(){
   custom_link "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig"
+  custom_link "$HOME/.dotfiles/nvim" "$HOME/.config/nvim"
 }
 
 linux_links(){
