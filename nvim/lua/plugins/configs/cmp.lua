@@ -19,6 +19,7 @@ cmp.setup {
   sources = {
     { name = 'crates' },
     { name = 'rust-analyzer' },
+    { name = 'treesitter' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'path' },
