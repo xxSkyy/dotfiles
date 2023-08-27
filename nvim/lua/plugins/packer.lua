@@ -315,13 +315,37 @@ require('packer').startup(function(use)
   }
 
   -- Package json helper
-  use({
+  use {
     "vuki656/package-info.nvim",
     requires = "MunifTanjim/nui.nvim",
     config = function()
       neovim.require('package-info')
     end
-  })
+  }
+
+  -- Better UI
+  use {
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  }
+
+  -- Pretty TS Errors
+  use {
+    "davidosomething/format-ts-errors.nvim"
+  }
+
+  -- Lsp lines errors
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  }
+
+  -- Pretty hover
+  use {
+    "Fildo7525/pretty_hover",
+  }
 
   -- SQL LSP
   use 'nanotee/sqls.nvim'

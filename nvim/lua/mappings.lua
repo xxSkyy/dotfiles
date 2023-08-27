@@ -1,4 +1,4 @@
-local maps = { i = {}, n = {}, v = {}, t = {},[""] = {} }
+local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
 
 maps[""]["<Space>"] = "<Nop>"
 
@@ -154,7 +154,9 @@ if not neovim.is_vscode() then
 
   maps.n["<leader>e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", noremap = true, desc = "Open diagnostic" }
   maps.n["<leader>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", noremap = true, desc = "LSP Rename" }
-  maps.n["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", noremap = true, desc = "Hover" }
+
+  -- maps.n["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", noremap = true, desc = "Hover" }
+  maps.n["K"] = { function() require("pretty_hover").hover() end, desc = "Unstage git hunk" }
 
   maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree" }
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
