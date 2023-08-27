@@ -332,6 +332,12 @@ require('packer').startup(function(use)
     }
   }
 
+  -- LSP loading progress
+  use {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+  }
+
   -- Pretty TS Errors
   use {
     "davidosomething/format-ts-errors.nvim"
