@@ -42,6 +42,12 @@ require('nightfox').setup({
       keywords = "italic",
       types = "italic,bold",
     }
+  },
+  groups = {
+    all = {
+      NormalFloat = { fg = "fg1", bg = "NONE", },
+    }
   }
+
 })
 vim.cmd([[colorscheme duskfox]])
