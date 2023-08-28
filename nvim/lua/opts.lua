@@ -2,7 +2,6 @@
 local opt = vim.opt
 local cmd = vim.api.nvim_command
 
-
 -- [[ Context ]]
 opt.colorcolumn = '60' -- str:  Show col for max line length
 opt.number = true -- bool: Show line numbers
@@ -93,4 +92,7 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
-vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+vim.diagnostic.config({
+  virtual_lines = { only_current_line = true },
+  update_in_insert = false
+})
