@@ -60,6 +60,9 @@ if not neovim.is_vscode() then
   maps.n[">b"] = { "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer tab right" }
   maps.n["<b"] = { "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer tab left" }
 
+  -- Lsp lines
+  maps.n["<leader>L"] = { function() require("lsp_lines").toggle() end, desc = "Toggle LSP lines" }
+
   -- Close current buffer
   maps.n["<leader>cc"] = {
     "<cmd>lua require('close_buffers').delete({type = 'this'})<CR>",
