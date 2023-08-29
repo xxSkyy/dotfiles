@@ -118,12 +118,8 @@ end
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 if has_cmp_nvim_lsp then
-  local capabilities = cmp_nvim_lsp.default_capabilities()
-  capabilities.workspace = {
-    didChangeWatchedFiles = {
-      dynamicRegistration = true
-    }
-  }
+  local lspconfig = require('lspconfig')
+  local lsp_defaults = lspconfig.util.default_config
 
-  neovim.capabilities = capabilities
+  neovim.capabilities = lsp_defaults.capabilities
 end
