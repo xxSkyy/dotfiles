@@ -140,6 +140,14 @@ if not neovim.is_vscode() then
   }
 
 
+  -- Harpoon
+  maps.n["<leader>hh"] = { function() require("harpoon.ui").toggle_quick_menu() end, desc = "Next git hunk" }
+  maps.n["<leader>ha"] = { function() require("harpoon.mark").add_file() end, desc = "Previous git hunk" }
+  maps.n["<leader>hd"] = { function() require("harpoon.mark").rm_file() end, desc = "Previous git hunk" }
+  maps.n["<leader>hc"] = { function() require("harpoon.mark").clear_all() end, desc = "Previous git hunk" }
+  maps.n["<leader>hn"] = { function() require("harpoon.ui").nav_next() end, desc = "Previous git hunk" }
+  maps.n["<leader>hp"] = { function() require("harpoon.ui").nav_prev() end, desc = "Previous git hunk" }
+
   -- GitSigns
   maps.n["<leader>gj"] = { function() require("gitsigns").next_hunk() end, desc = "Next git hunk" }
   maps.n["<leader>gk"] = { function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" }

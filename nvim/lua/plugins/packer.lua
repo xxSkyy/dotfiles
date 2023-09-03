@@ -348,6 +348,13 @@ require('packer').startup(function(use)
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   }
 
+  use {
+    'ThePrimeagen/harpoon',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    }
+  }
+
   -- Pretty hover
   use {
     "Fildo7525/pretty_hover",
