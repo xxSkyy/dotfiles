@@ -92,7 +92,14 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
     didChangeWatchedFiles = {
       dynamicRegistration = true
     }
-  } }
+  } },
+  {
+    textDocument = { foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    } }
+
+  }
 )
 
 neovim.capabilities = lsp_defaults.capabilities
