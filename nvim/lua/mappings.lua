@@ -169,7 +169,8 @@ if not neovim.is_vscode() then
   -- maps.n["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", noremap = true, desc = "Hover" }
   maps.n["K"] = { function() require("pretty_hover").hover() end, desc = "Unstage git hunk" }
 
-  maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree" }
+  maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree", silent = true }
+
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
   maps.n["<C-g>"] = { "<cmd>Telescope live_grep_args<CR>", desc = "Live grep args" }
   maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
@@ -283,9 +284,6 @@ if not neovim.is_vscode() then
   maps.t["<C-k>"] = { "<c-\\><c-n><c-w>k", desc = "Terminal up window navigation" }
   maps.t["<C-l>"] = { "<c-\\><c-n><c-w>l", desc = "Terminal right window navigation" }
 
-
-  -- Toggle nvim-tree
-  maps.n['<C-E>'] = { [[:Neotree toggle<CR>]] }
 
   -- Git Diff view
   -- maps.n['gd'] = { '[[:DiffviewOpen<CR>]]' }
