@@ -7,7 +7,14 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ZSH_THEME="zhann"
 
-plugins=(git kubectl yarn zsh-autosuggestions zsh-syntax-highlighting emotty emoji)
+plugins=(git
+  kubectl
+  yarn
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  emotty
+  emoji
+)
 
 bindkey '^ ' autosuggest-accept
 
