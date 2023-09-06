@@ -1,2 +1,1 @@
 - [] Unify mac and linux .zshrc
-- [] implement stow for installing dotfiles
