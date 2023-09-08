@@ -16,6 +16,8 @@ plugins=(git
   emoji
 )
 
+bindkey -s ^p "~/temp/tmux-sessionizer\n"
+
 bindkey '^ ' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh

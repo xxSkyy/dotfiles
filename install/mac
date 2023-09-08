@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+INSTALL_OS="mac"
+
+if [[ -z $DORFILES ]]; then
+ DOTFILES=$HOME/.dotfiles
+fi
+
+INSTALL_OS=$INSTALL_OS $DOTFILES/install/prepare

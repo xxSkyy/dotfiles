@@ -1,0 +1,4 @@
+nvim
+tmux
+bin
+gitconfig

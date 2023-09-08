@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+config_dir="install"
+
+if [[ -z $DOTFILES ]]; then
+ DOTFILES=$HOME/.dotfiles
+fi
+
+folders_list=""
+
+common_folders=$(cat $DOTFILES/$config_dir/folders-common.txt | tr "\n" ,)
+folders_list+=$common_folders
+
+if [[ $INSTALL_OS ]]; then
+  os_folders=$(cat $DOTFILES/$config_dir/folders-$INSTALL_OS.txt | tr "\n" ,)
+  folders_list+=$os_folders
+fi
+
+# Remove dangling las "," from list of folders
+folders_list=${folders_list::-1} 
+
+STOW_FOLDERS=$folders_list DOTFILES=$DOTFILES $DOTFILES/$config_dir/install
