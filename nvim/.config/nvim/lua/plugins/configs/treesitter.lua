@@ -18,7 +18,8 @@ require 'nvim-treesitter.configs'.setup {
     "lua",
     "dockerfile",
     "tsx",
-    "sql"
+    "sql",
+    "go"
   },
   endwise = {
     enable = true,
@@ -27,12 +28,24 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
     enable_close_on_slash = false,
     filetypes = {
-      'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx',
+      'html',
+      'javascript',
+      'typescript',
+      'javascriptreact',
+      'typescriptreact',
+      'svelte',
+      'vue',
+      'tsx',
+      'jsx',
       'rescript',
       'xml',
       'php',
       'markdown',
-      'glimmer', 'handlebars', 'hbs', 'rust'
+      'glimmer',
+      'handlebars',
+      'hbs',
+      'rust',
+      'go',
     }
   },
 }
