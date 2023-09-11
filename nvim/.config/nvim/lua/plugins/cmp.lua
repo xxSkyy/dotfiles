@@ -27,12 +27,14 @@ local format = function(item)
   end
 
   local sig = item.menu
-
-  if #sig > MAX_MENU_WIDTH then
-    item.menu = vim.fn.strcharpart(sig, 0, MAX_MENU_WIDTH) .. ELLIPSIS_CHAR
-  else
-    item.menu = sig .. get_ws(MAX_MENU_WIDTH, #sig)
+  if sig then
+    if #sig > MAX_MENU_WIDTH then
+      item.menu = vim.fn.strcharpart(sig, 0, MAX_MENU_WIDTH) .. ELLIPSIS_CHAR
+    else
+      item.menu = sig .. get_ws(MAX_MENU_WIDTH, #sig)
+    end
   end
+
 
   return item
 end
