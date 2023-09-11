@@ -63,7 +63,7 @@ cmp.setup {
   },
   formatting = {
     format = function(_, vim_item)
-      vim_item.kind = require("lspkind").presets.codicons[vim_item.kind]
+      vim_item.kind = require("lspkind").presets.default[vim_item.kind]
           .. "  "
           .. vim_item.kind
       return vim_item
