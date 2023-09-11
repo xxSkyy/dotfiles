@@ -88,16 +88,20 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   'force',
   lsp_defaults.capabilities,
   require('cmp_nvim_lsp').default_capabilities(),
-  { workspace = {
-    didChangeWatchedFiles = {
-      dynamicRegistration = true
-    }
-  } },
   {
-    textDocument = { foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    } }
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true
+      }
+    }
+  },
+  {
+    textDocument = {
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
+    }
 
   }
 )
