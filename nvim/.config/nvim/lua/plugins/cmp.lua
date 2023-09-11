@@ -8,6 +8,35 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local ELLIPSIS_CHAR = '…'
+local MAX_LABEL_WIDTH = 25
+-- Menu is a type signature at the end of the cmp
+local MAX_MENU_WIDTH = 14
+
+local get_ws = function(max, len)
+  return (" "):rep(max - len)
+end
+
+local format = function(item)
+  local content = item.abbr
+
+  if #content > MAX_LABEL_WIDTH then
+    item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+  else
+    item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+  end
+
+  local sig = item.menu
+
+  if #sig > MAX_MENU_WIDTH then
+    item.menu = vim.fn.strcharpart(sig, 0, MAX_MENU_WIDTH) .. ELLIPSIS_CHAR
+  else
+    item.menu = sig .. get_ws(MAX_MENU_WIDTH, #sig)
+  end
+
+  return item
+end
+
 cmp.setup {
   source_priority = {
     nvim_lsp = 1000,
@@ -63,6 +92,8 @@ cmp.setup {
   },
   formatting = {
     format = function(_, vim_item)
+      vim_item = format(vim_item)
+
       vim_item.kind = require("lspkind").presets.default[vim_item.kind]
           .. "  "
           .. vim_item.kind
