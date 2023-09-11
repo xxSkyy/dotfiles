@@ -117,10 +117,6 @@ if not neovim.is_vscode() then
   maps.n["<leader>Dr"] = { "<cmd>DBUIRenameBuffer<cr>", desc = "Database Rename Buffer" }
   maps.n["<leader>Dq"] = { "<cmd>DBUILastQueryInfo<cr>", desc = "Database last query info" }
 
-  -- DiffView
-  maps.n["<leader>dv"] = { "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" }
-  maps.n["<leader>dc"] = { "<cmd>DiffviewClose<cr>", desc = "Diffview Close" }
-
   -- Package info
   maps.n["<leader>nv"] = {
     function() require("package-info").change_version() end,
