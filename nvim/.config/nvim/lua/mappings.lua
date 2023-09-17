@@ -168,6 +168,7 @@ if not neovim.is_vscode() then
   maps.n["<C-e>"] = { "<cmd>Neotree toggle<CR>", desc = "Toggle neotree", silent = true }
 
   maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
+  maps.n["<C-P>"] = { "<cmd>Telescope find_files hidden=true<CR>", desc = "Find file including hidden" }
   maps.n["<C-g>"] = { "<cmd>Telescope live_grep_args<CR>", desc = "Live grep args" }
   maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
   -- maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
@@ -291,14 +292,6 @@ if not neovim.is_vscode() then
       local top_level = vim.fn.input("Main type name > ")
 
       vim.cmd(".!quicktype -l " .. language .. " --no-enums --just-types --top-level " .. top_level)
-    end,
-    desc = "Generate types from current line json"
-  }
-
-  maps.n["<leader>z"] = {
-    function()
-      print(vim.v.count)
-      vim.cmd(":ToggleTerm " .. vim.v.count .. "direction=float")
     end,
     desc = "Generate types from current line json"
   }
