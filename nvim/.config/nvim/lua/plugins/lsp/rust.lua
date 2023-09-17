@@ -40,6 +40,10 @@ local server = {
       checkonsave = {
         command = "clippy"
       },
+
+      rustfmt = {
+        extraArgs = { '--config', 'max_width=60' }
+      },
     }
   }
 }
