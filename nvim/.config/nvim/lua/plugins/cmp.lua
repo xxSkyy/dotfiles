@@ -84,14 +84,20 @@ cmp.setup {
         fallback()
       end
     end,
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true })
+    ['<C-Space>'] = function()
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      else
+        cmp.complete()
+      end
+    end,
   },
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
   },
+
   formatting = {
     format = function(_, vim_item)
       vim_item = format(vim_item)
