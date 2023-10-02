@@ -303,6 +303,10 @@ require('packer').startup(function(use)
   -- Another commenting
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
+  -- Arduino
+  use 'stevearc/vim-arduino'
+  use 'edKotinsky/Arduino.nvim'
+
   -- Removed, use lazygit instead
   -- git diffview
   -- use {

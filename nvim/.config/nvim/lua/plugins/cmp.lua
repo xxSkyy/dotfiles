@@ -42,19 +42,19 @@ end
 cmp.setup {
   source_priority = {
     nvim_lsp = 1000,
-    luasnip = 750,
     buffer = 500,
+    luasnip = 300,
     path = 250,
     text = 10,
   },
   sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
     { name = 'crates' },
     { name = 'rust-analyzer' },
     { name = 'treesitter' },
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
     { name = 'path' },
-    -- { name = "luasnip" },
+    { name = "luasnip" },
     { name = "vim-dadbod-completion" }
   },
   mapping = {

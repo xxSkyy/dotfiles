@@ -7,6 +7,12 @@ function neovim.initialize_icons()
   neovim.text_icons = require "utils.icons.text"
 end
 
+function neovim.get_clean_mappings()
+  local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
+
+  return maps
+end
+
 --- Get an icon from `lspkind` if it is available and return it
 -- @param kind the kind of icon in `lspkind` to retrieve
 -- @return the icon
