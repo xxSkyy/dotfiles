@@ -199,6 +199,15 @@ require('packer').startup(function(use)
     end
   }
 
+  use {
+    "imNel/monorepo.nvim",
+    config = function()
+      neovim.require("monorepo",
+        { autoload_telescope = false }
+      )
+    end,
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  }
 
   -- Treesitter autoclose and autorename html tags
   use { "windwp/nvim-ts-autotag",

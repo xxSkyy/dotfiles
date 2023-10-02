@@ -1,4 +1,4 @@
-local maps = { i = {}, n = {}, v = {}, t = {}, [""] = {} }
+local maps = neovim.get_clean_mappings()
 
 maps[""]["<Space>"] = "<Nop>"
 
@@ -174,6 +174,27 @@ if not neovim.is_vscode() then
   -- maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
   maps.n["<C-y>"] = { "<cmd>lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>" }
 
+  -- Monorepo
+  local function indexOrNextProject(can_go_next)
+    local index = vim.v.count
+    if (index < 0) then
+      if can_go_next then
+        require("monorepo").next_project()
+      end
+      return
+    end
+
+    require("monorepo").go_to_project(index)
+  end
+
+  maps.n["<leader>np"] = {
+    function() require("telescope").extensions.monorepo.monorepo() end,
+    desc = "Monorepo project list"
+  }
+  maps.n["<leader>nt"] = { function() require("monorepo").toggle_project() end, desc = "Monorepo toggle project" }
+  maps.n["<leader>nn"] = { function() indexOrNextProject() end, desc = "Monorepo next project or prefixed index" }
+  maps.n["<C-m>"] = { function() indexOrNextProject(false) end, desc = "Monorepo next project or prefixed index" }
+
   -- Smart Splits
 
   -- Better window navigation
@@ -273,6 +294,7 @@ if not neovim.is_vscode() then
 
   maps.n["<F7>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
   maps.t["<F7>"] = maps.n["<F7>"]
+
 
 
   -- Improved Terminal Navigation
