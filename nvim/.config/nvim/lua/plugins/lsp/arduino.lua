@@ -58,6 +58,7 @@ end
 local kill_arduino_serial = function()
   local baud = get_arduino_baud() or 9600
   local port = get_arduino_port()
+
   os.execute("pkill -f " .. port .. "  " .. baud)
 end
 
@@ -112,9 +113,7 @@ require 'lspconfig'['arduino_language_server'].setup {
       desc = "Arduino serial (kill previous one)"
     }
     maps.n["<C-a>s"] = {
-      function()
-        open_arduino_serial()
-      end,
+      open_arduino_serial,
       desc = "Arduino serial"
     }
     maps.n["<C-a>v"] = { "<cmd>ArduinoVerify<cr>", desc = "Arduino verify" }
