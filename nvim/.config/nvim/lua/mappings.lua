@@ -54,6 +54,21 @@ if not neovim.is_vscode() then
   maps.n["<leader>xr"] = { "<cmd>Trouble lsp_references<cr>", desc = "Trouble lsp reference window" }
   maps.n["<leader>xc"] = { "<cmd>TroubleClose<cr>", desc = "Close trouble window" }
 
+  -- LSP
+  maps.n["<leader>ld"] = { vim.lsp.buf.declaration, desc = "LSP Declaration" }
+  maps.n["<leader>lt"] = { vim.lsp.buf.type_definition, desc = "LSP Type definition" }
+  maps.n["<leader>ls"] = { vim.lsp.buf.signature_help, desc = "LSP Signature help" }
+  maps.n["<leader>li"] = { vim.lsp.buf.implementation, desc = "LSP Implementation" }
+  maps.n["<leader>lr"] = { vim.lsp.buf.references, desc = "LSP References" }
+  maps.n["<leader>lG"] =
+  { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Telescope Search workspace symbols" }
+  maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end,
+    desc = "Telescope LSP references" }
+  maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end,
+    desc = "Telescope Search diagnostics" }
+  maps.n["<leader>lI"] = { function() require("telescope.builtin").lsp_implementations() end,
+    desc = "Telescope LSP Implementation" }
+
   -- Navigate buffers
   maps.n["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" }
   maps.n["<S-h>"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer tab" }
@@ -263,10 +278,6 @@ if not neovim.is_vscode() then
     desc = "Search symbols",
   }
 
-  maps.n["<leader>lG"] =
-  { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
-  maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end, desc = "Search references" }
-  maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end, desc = "Search diagnostics" }
   -- end
 
   maps.n["<leader>tn"] = { "<cmd>tabnew<cr>" }
