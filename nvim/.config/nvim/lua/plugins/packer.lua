@@ -10,6 +10,7 @@ require('packer').startup(function(use)
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
   use "saadparwaiz1/cmp_luasnip"
   use "onsails/lspkind.nvim"
 
@@ -294,8 +295,11 @@ require('packer').startup(function(use)
   -- Show indentation etc
   use { "lukas-reineke/indent-blankline.nvim",
     config = function()
-      neovim.require('indent_blankline', {
-        show_end_of_line = true,
+      neovim.require('ibl', {
+        scope = {
+          show_end = true
+        }
+        -- show_end = true,
       })
     end
   }
