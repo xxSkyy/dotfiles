@@ -121,6 +121,15 @@ function neovim.is_npm_package_installed(package)
   return false
 end
 
+function neovim.generate_uuid()
+  local random = math.random
+  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  return string.gsub(template, '[xy]', function(c)
+    local v = (c == 'x') and random(0, 0xf) or random(8, 0xb)
+    return string.format('%x', v)
+  end)
+end
+
 local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 
 if has_cmp_nvim_lsp then
