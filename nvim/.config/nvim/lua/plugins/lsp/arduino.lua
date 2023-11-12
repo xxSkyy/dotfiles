@@ -9,6 +9,8 @@ local get_arduino_baud = function()
   return vim.g.arduino_serial_baud
 end
 
+
+
 local get_arduino_boards = function()
   local boards = {}
   local boards_data = vim.fn.json_decode(vim.fn.system('arduino-cli board listall --format json'))
@@ -49,6 +51,7 @@ local get_arduino_ports = function()
   local ports = {}
 
   for _, glob in pairs(global_ports) do
+    print(glob)
     local found = vim.fn.glob(glob, true, true)
     for _, port in pairs(found) do
       table.insert(ports, port)
@@ -81,16 +84,22 @@ local get_arduino_port = function()
   end
 end
 
-local open_arduino_serial = function()
+local open_arduino_serial = function(log)
   local baud = get_arduino_baud()
   local port = get_arduino_port()
+
+  local params = ""
+
+  if log then
+    params = params .. " -L"
+  end
 
   if port == nil then
     vim.notify("Can't find arduino port.")
     return
   end
 
-  vim.cmd("5TermExec direction=float cmd='screen " .. port .. " " .. baud .. "'")
+  vim.cmd("5TermExec direction=float cmd='screen " .. params .. " " .. port .. " " .. baud .. "'")
 end
 
 local kill_arduino_serial = function()
@@ -165,34 +174,55 @@ local select_serial = function()
   }):find();
 end
 
-require 'lspconfig'['arduino_language_server'].setup {
-  on_new_config = arduino.on_new_config,
-  on_attach = function()
+local fqbn = "arduino:avr:nano:cpu=atmega328old"
+-- local clangd = require 'mason-core.path'.bin_prefix 'clangd'
+
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.didChange = nil
+capabilities.workspace.semanticTokens = nil
+
+require 'lspconfig'.arduino_language_server.setup {
+  cmd = {
+    "arduino-language-server",
+    "--clangd", "/usr/bin/clangd",
+    "--cli-config", "~.config/arduino/arduino-cli.yaml",
+    "--fqbn", fqbn
+  },
+  capabilities = capabilities,
+  on_attach = function(_, bufnr)
+    set_selected_board("arduino:avr:nano:cpu=atmega328old")
+
     local maps = neovim.get_clean_mappings()
 
-    maps.n["<C-m>u"] = { "<cmd>ArduinoSerialKill<cr><cmd>ArduinoUpload<cr>", desc = "Arduino upload" }
-    maps.n["<C-m>k"] = {
+    local prefix = "A"
+
+    maps.n[prefix .. "u"] = { "<cmd>ArduinoSerialKill<cr><cmd>ArduinoUpload<cr>", desc = "Arduino upload" }
+    maps.n[prefix .. "k"] = {
       function()
         kill_arduino_serial()
         vim.notify("Killed arduino serial!")
       end,
       desc = "Kill arduino serial logger"
     }
-    maps.n["<C-m>L"] = {
+    maps.n[prefix .. "L"] = {
       function()
-        kill_arduino_serial()
-        open_arduino_serial()
+        open_arduino_serial(true)
       end,
-      desc = "Arduino serial logger (kill previous one)"
+      desc = "Arduino serial logger with logging to file"
     }
-    maps.n["<C-m>l"] = {
+    maps.n[prefix .. "l"] = {
       open_arduino_serial,
       desc = "Arduino serial logger"
     }
-    maps.n["<C-m>v"] = { "<cmd>ArduinoVerify<cr>", desc = "Arduino verify" }
-    maps.n["<C-m>s"] = { select_serial, desc = "Arduino choose serial" }
-    maps.n["<C-m>b"] = { select_board, desc = "Arduino choose board" }
+    maps.n[prefix .. "v"] = { "<cmd>ArduinoVerify<cr>", desc = "Arduino verify" }
+    maps.n[prefix .. "s"] = { select_serial, desc = "Arduino choose serial" }
+    maps.n[prefix .. "b"] = { select_board, desc = "Arduino choose board" }
 
     neovim.set_mappings(maps)
+
+
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
   end
 }
