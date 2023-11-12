@@ -14,7 +14,10 @@ telescope.setup {
         results_width = 0.8,
       },
       vertical = {
-        mirror = false,
+        preview_cutoff = 40,
+        preview_width = 1,
+        wrap_results = true,
+        prompt_position = "top"
       },
       width = 0.87,
       height = 0.80,
@@ -37,3 +40,4 @@ telescope.setup {
 
 telescope.load_extension("live_grep_args")
 telescope.load_extension("monorepo")
+telescope.load_extension("notify")
