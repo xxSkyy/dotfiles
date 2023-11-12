@@ -62,12 +62,18 @@ if not neovim.is_vscode() then
   maps.n["<leader>lr"] = { vim.lsp.buf.references, desc = "LSP References" }
   maps.n["<leader>lG"] =
   { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Telescope Search workspace symbols" }
-  maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end,
-    desc = "Telescope LSP references" }
-  maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end,
-    desc = "Telescope Search diagnostics" }
-  maps.n["<leader>lI"] = { function() require("telescope.builtin").lsp_implementations() end,
-    desc = "Telescope LSP Implementation" }
+  maps.n["<leader>lR"] = {
+    function() require("telescope.builtin").lsp_references() end,
+    desc = "Telescope LSP references"
+  }
+  maps.n["<leader>lD"] = {
+    function() require("telescope.builtin").diagnostics() end,
+    desc = "Telescope Search diagnostics"
+  }
+  maps.n["<leader>lI"] = {
+    function() require("telescope.builtin").lsp_implementations() end,
+    desc = "Telescope LSP Implementation"
+  }
 
   -- Navigate buffers
   maps.n["<S-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" }
@@ -202,6 +208,10 @@ if not neovim.is_vscode() then
     require("monorepo").go_to_project(index)
   end
 
+  maps.n["<leader>nh"] = {
+    function() require("telescope").extensions.notify.notify() end,
+    desc = "Telescope notifications list"
+  }
   maps.n["<leader>np"] = {
     function() require("telescope").extensions.monorepo.monorepo() end,
     desc = "Monorepo project list"
