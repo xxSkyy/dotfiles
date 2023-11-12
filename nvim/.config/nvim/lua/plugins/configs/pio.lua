@@ -243,6 +243,12 @@ local add_library = function()
   vim.cmd("8TermExec direction=float cmd='clear\rUUID=" .. workspace_uuid .. " pio pkg install -l  " .. library .. "'")
 end
 
+local compile = function()
+  vim.fn.system("pio run -t compiledb")
+  vim.notify("Compiledb executed")
+end
+
+
 local maps = neovim.get_clean_mappings()
 local prefix = "A"
 
@@ -254,6 +260,7 @@ maps.n[prefix .. "i"] = { show_info, desc = "[PIO] Show info" }
 maps.n[prefix .. "v"] = { verify, desc = "[PIO] Open monitor" }
 maps.n[prefix .. "m"] = { open_monitor, desc = "[PIO] Open monitor" }
 maps.n[prefix .. "l"] = { add_library, desc = "[PIO] Add library" }
+maps.n[prefix .. "c"] = { compile, desc = "[PIO] Compiledb" }
 maps.n[prefix .. "M"] = {
   function()
     kill_monitor()
