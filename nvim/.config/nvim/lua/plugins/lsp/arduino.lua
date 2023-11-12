@@ -109,7 +109,6 @@ local kill_arduino_serial = function()
   os.execute("pkill -f " .. port .. "  " .. baud)
 end
 
-
 vim.api.nvim_create_user_command("ArduinoSerialKill",
   function()
     kill_arduino_serial()
@@ -197,7 +196,7 @@ require 'lspconfig'.arduino_language_server.setup {
 
     local prefix = "A"
 
-    maps.n[prefix .. "u"] = { "<cmd>ArduinoSerialKill<cr><cmd>ArduinoUpload<cr>", desc = "Arduino upload" }
+    maps.n[prefix .. "u"] = { "<cmd>ArduinoSerialKill<cr><cmd>arduinoupload<cr>", desc = "Arduino upload" }
     maps.n[prefix .. "k"] = {
       function()
         kill_arduino_serial()
@@ -219,7 +218,8 @@ require 'lspconfig'.arduino_language_server.setup {
     maps.n[prefix .. "s"] = { select_serial, desc = "Arduino choose serial" }
     maps.n[prefix .. "b"] = { select_board, desc = "Arduino choose board" }
 
-    neovim.set_mappings(maps)
+    -- Disable mappings, switched to PIO
+    -- neovim.set_mappings(maps)
 
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
