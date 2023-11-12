@@ -55,7 +55,8 @@ cmp.setup {
     { name = 'treesitter' },
     { name = 'path' },
     { name = "luasnip" },
-    { name = "vim-dadbod-completion" }
+    { name = "vim-dadbod-completion" },
+    { name = 'nvim_lsp_signature_help' },
   },
   mapping = {
     ['<Tab>'] = function(fallback)
@@ -136,6 +137,9 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   },
   {
     textDocument = {
+      signatureHelp = {
+        dynamicRegistration = true
+      },
       foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true
