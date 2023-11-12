@@ -235,6 +235,13 @@ local select_device = function()
   }):find();
 end
 
+local add_library = function()
+  local library = vim.fn.input("Library name or url: ", "")
+
+  if (library == nil or library == "") then return end
+
+  vim.cmd("8TermExec direction=float cmd='clear\rUUID=" .. workspace_uuid .. " pio pkg install -l  " .. library .. "'")
+end
 
 local maps = neovim.get_clean_mappings()
 local prefix = "A"
@@ -246,6 +253,7 @@ maps.n[prefix .. "E"] = { deselect_env, desc = "[PIO] Deselect env" }
 maps.n[prefix .. "i"] = { show_info, desc = "[PIO] Show info" }
 maps.n[prefix .. "v"] = { verify, desc = "[PIO] Open monitor" }
 maps.n[prefix .. "m"] = { open_monitor, desc = "[PIO] Open monitor" }
+maps.n[prefix .. "l"] = { add_library, desc = "[PIO] Add library" }
 maps.n[prefix .. "M"] = {
   function()
     kill_monitor()
