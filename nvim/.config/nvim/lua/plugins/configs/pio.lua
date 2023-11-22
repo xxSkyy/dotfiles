@@ -205,11 +205,11 @@ local upload = function()
     params = params .. " -e " .. env .. " "
   end
 
-  vim.cmd("6TermExec direction=float cmd='clear\rUUID=" .. workspace_uuid .. " pio run -t upload " .. params .. "'")
+  vim.cmd("6TermExec direction=float cmd='\rclear\rUUID=" .. workspace_uuid .. " pio run -t upload " .. params .. "'")
 end
 
 local verify = function()
-  vim.cmd("7TermExec direction=float cmd='clear\rpio run'")
+  vim.cmd("7TermExec direction=float cmd='\rclear\rpio run'")
 end
 
 local select_device = function()
@@ -240,7 +240,7 @@ local add_library = function()
 
   if (library == nil or library == "") then return end
 
-  vim.cmd("8TermExec direction=float cmd='clear\rUUID=" .. workspace_uuid .. " pio pkg install -l  " .. library .. "'")
+  vim.cmd("8TermExec direction=float cmd='\rclear\rUUID=" .. workspace_uuid .. " pio pkg install -l  " .. library .. "'")
 end
 
 local compile = function()
