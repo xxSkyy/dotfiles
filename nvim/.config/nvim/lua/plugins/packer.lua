@@ -292,6 +292,18 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Testing
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      'marilari88/neotest-vitest',
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "haydenmeade/neotest-jest",
+      "rouge8/neotest-rust"
+    }
+  }
+
   -- Show indentation etc
   use { "lukas-reineke/indent-blankline.nvim",
     config = function()
