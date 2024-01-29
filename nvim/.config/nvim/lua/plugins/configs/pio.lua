@@ -31,7 +31,8 @@ local arduino_serial_port_globs = {
   "/dev/ttyUSB*",
   "/dev/tty.usbmodem*",
   "/dev/tty.usbserial*",
-  "/dev/tty.wchusbserial*"
+  "/dev/tty.wchusbserial*",
+  "/dev/cu.PL2303*"
 }
 
 local selected_device = nil
@@ -118,7 +119,7 @@ local get_arduino_devices = function()
 
 
   for _, board in pairs(boards_data) do
-    if (string.find(board.port, "usbserial")) then
+    if (string.find(board.port, "usbserial") or string.find(board.port, "PL2303")) then
       table.insert(boards, board.port)
     end
   end
@@ -248,6 +249,13 @@ local compile = function()
   vim.notify("Compiledb executed")
 end
 
+-- Platformio has issue with clangd and esp32. Compiling only
+-- under arduino solves the issue. Temporary fix.
+local safe_compile = function()
+  vim.fn.system("pio run -t compiledb -e nanoatmega328")
+  vim.notify("[Safe mode] Compiledb executed")
+end
+
 
 local maps = neovim.get_clean_mappings()
 local prefix = "A"
@@ -261,6 +269,7 @@ maps.n[prefix .. "v"] = { verify, desc = "[PIO] Open monitor" }
 maps.n[prefix .. "m"] = { open_monitor, desc = "[PIO] Open monitor" }
 maps.n[prefix .. "l"] = { add_library, desc = "[PIO] Add library" }
 maps.n[prefix .. "c"] = { compile, desc = "[PIO] Compiledb" }
+maps.n[prefix .. "C"] = { safe_compile, desc = "[PIO] Compiledb (Safe)" }
 maps.n[prefix .. "M"] = {
   function()
     kill_monitor()
