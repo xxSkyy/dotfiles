@@ -12,6 +12,10 @@ neovim.require('mason-lspconfig', {
     "graphql",
     "dockerls",
     "cssls",
-    "gopls"
+    "gopls",
+    "jdtls",
+    "clangd",
+    "prismals",
+    "bashls"
   },
 })
