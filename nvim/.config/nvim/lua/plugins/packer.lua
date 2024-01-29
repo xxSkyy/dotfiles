@@ -274,6 +274,9 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Java
+  use 'mfussenegger/nvim-jdtls'
+
   -- Auto pairs plugin
   use "windwp/nvim-autopairs"
 
