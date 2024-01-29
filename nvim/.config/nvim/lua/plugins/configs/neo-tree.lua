@@ -58,7 +58,6 @@ require('neo-tree').setup({
     commands = {
       copy_file_name = function(state)
         local node = state.tree:get_node()
-        print(node.name)
         vim.fn.setreg('+', node.name)
       end
     },
