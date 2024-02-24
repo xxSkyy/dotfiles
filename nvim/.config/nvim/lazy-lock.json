@@ -19,6 +19,7 @@
   "inlay-hints.nvim": { "branch": "main", "commit": "006b0898f5d3874e8e528352103733142e705834" },
   "kanagawa.nvim": { "branch": "master", "commit": "ab41956c4559c3eb21e713fcdf54cda1cb6d5f40" },
   "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
+  "lazygit.nvim": { "branch": "main", "commit": "10a5f30536dc2d4abe36d410d83149272ea457fa" },
   "leap.nvim": { "branch": "main", "commit": "ff5522a0986cca1bbbeaa4f6d86d23ebf58a025c" },
   "lsp-format.nvim": { "branch": "master", "commit": "5e18095a637ec969b86c72266872219ad2f4586e" },
   "lsp_lines.nvim": { "branch": "main", "commit": "cf2306dd332e34a3e91075b40bdd4f6db824b2ee" },
