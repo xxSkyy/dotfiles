@@ -16,6 +16,7 @@ if (isPioDir == nil) then
 end
 
 local bauds_list = {
+  "500000",
   "250000",
   "115200",
   "19200",
@@ -32,6 +33,7 @@ local arduino_serial_port_globs = {
   "/dev/tty.usbmodem*",
   "/dev/tty.usbserial*",
   "/dev/tty.wchusbserial*",
+  "/dev/cu.usbmodem*",
   "/dev/cu.PL2303*"
 }
 
@@ -119,7 +121,7 @@ local get_arduino_devices = function()
 
 
   for _, board in pairs(boards_data) do
-    if (string.find(board.port, "usbserial") or string.find(board.port, "PL2303")) then
+    if (string.find(board.port, "usbserial") or string.find(board.port, "PL2303") or string.find(board.port, "usbmodem")) then
       table.insert(boards, board.port)
     end
   end

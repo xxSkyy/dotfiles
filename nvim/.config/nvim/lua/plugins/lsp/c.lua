@@ -16,7 +16,7 @@ require 'lspconfig'.clangd.setup {
     "clangd",
     "--background-index",
     "--offset-encoding=utf-16",
-    -- "--query-driver=" .. vim.fn.expand("~/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*")
+    "--query-driver=" .. vim.fn.expand("~/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-gcc*")
   },
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 }

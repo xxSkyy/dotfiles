@@ -41,9 +41,9 @@ end
 
 cmp.setup {
   source_priority = {
-    nvim_lsp = 1000,
-    buffer = 500,
-    luasnip = 300,
+    buffer = 1000,
+    nvim_lsp = 800,
+    luasnip = 500,
     path = 250,
     text = 10,
   },
@@ -112,7 +112,11 @@ cmp.setup {
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
-  }
+  },
+  -- completion = {
+  --   completeopt = 'noselect'
+  -- },
+  -- preselect = cmp.PreselectMode.
 }
 
 cmp.event:on(
@@ -130,10 +134,11 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   require('cmp_nvim_lsp').default_capabilities(),
   {
     workspace = {
+      workspaceFolders = true,
       didChangeWatchedFiles = {
-        dynamicRegistration = true
+        dynamicRegistration = true,
       }
-    }
+    },
   },
   {
     textDocument = {
