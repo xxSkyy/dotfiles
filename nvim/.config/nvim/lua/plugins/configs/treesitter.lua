@@ -19,7 +19,8 @@ require 'nvim-treesitter.configs'.setup {
     "dockerfile",
     "tsx",
     "sql",
-    "go"
+    "go",
+    "vue"
   },
   endwise = {
     enable = true,

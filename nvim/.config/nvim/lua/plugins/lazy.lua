@@ -333,16 +333,16 @@ require('lazy').setup({
   { "Fildo7525/pretty_hover" },
 
   -- Dim inactive windows/panes
-  {
-    "miversen33/sunglasses.nvim",
-    config = function()
-      local sunglasses_options = {
-        filter_type = "SHADE",
-        filter_percent = 0.2
-      }
-      neovim.require("sunglasses", sunglasses_options)
-    end
-  },
+  -- {
+  --   "miversen33/sunglasses.nvim",
+  --   config = function()
+  --     local sunglasses_options = {
+  --       filter_type = "SHADE",
+  --       filter_percent = 0.2
+  --     }
+  --     neovim.require("sunglasses", sunglasses_options)
+  --   end
+  -- },
 
   -- SQL LSP
   'nanotee/sqls.nvim',
