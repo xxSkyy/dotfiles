@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+sudo apt install unzip golang gcc default-jre -y
+
+
+echo "Installing Zsh ans Oh My Zsh"
+sudo apt install zsh -y
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "Installing Zsh plugins"
+curl -sS https://starship.rs/install.sh | sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+
+
+echo "Removing original .zshrc"
+rm ~/.zshrc
+
+echo "Installing NVM and node"
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh" | bash
+
+echo "Loading NVM temporarily"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+echo "Installing node"
+nvm install --lts
+nvm alias default node
+
+echo "Installing Neovim"
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update -y
+sudo apt-get install neovim -y
+echo "Neovim installed..."
+
+echo "Installing stow"
+sudo apt install stow -y
+
+source ~/.zshrc
+
+echo "Installing lazygit"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin

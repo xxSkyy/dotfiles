@@ -2,7 +2,7 @@
 
 INSTALL_OS="mac"
 
-if [[ -z $DORFILES ]]; then
+if [[ -z $DOTFILES ]]; then
  DOTFILES=$HOME/.dotfiles
 fi
 
