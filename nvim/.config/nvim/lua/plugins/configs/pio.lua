@@ -193,6 +193,24 @@ local kill_monitor = function()
   os.execute("pkill -f " .. workspace_uuid .. "  monitor")
 end
 
+local fuses = function()
+  local device = get_device()
+  local env = get_env()
+  local baud = get_baud()
+
+  local params = " --monitor-port " .. baud
+
+  if device then
+    params = params .. " --upload-port " .. device .. " "
+  end
+
+  if env then
+    params = params .. " -e " .. env .. " "
+  end
+
+  vim.cmd("6TermExec direction=float cmd='\rclear\rUUID=" .. workspace_uuid .. " pio run -t fuses " .. params .. "'")
+end
+
 local upload = function()
   local device = get_device()
   local env = get_env()
@@ -293,6 +311,13 @@ maps.n[prefix .. "u"] = {
     upload()
   end,
   desc = "[PIO] Upload"
+}
+maps.n[prefix .. "f"] = {
+  function()
+    kill_monitor()
+    fuses()
+  end,
+  desc = "[PIO] Set fuses from config"
 }
 
 neovim.set_mappings(maps)
