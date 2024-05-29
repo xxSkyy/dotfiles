@@ -6,7 +6,7 @@ local conf = require("telescope.config").values
 
 local workspace_uuid = neovim.generate_uuid()
 
-local root_patterns = { "sdkconfig" }
+local root_patterns = { "sdkconfig", "CMakeLists.txt" }
 local matcher = require 'lspconfig'.util.root_pattern(root_patterns)
 
 local isIdfDir = matcher(vim.fn.getcwd())
@@ -256,6 +256,10 @@ local compile = function()
   run_cmd("idf.py build", "", 6)
 end
 
+local menu_config = function()
+  run_cmd("idf.py menuconfig", "", 7)
+end
+
 local select_device = function()
   local list = get_serial_devices()
 
@@ -279,12 +283,44 @@ local select_device = function()
   }):find();
 end
 
+-- Hard-coded list of targets
+local esp_targets = {
+  "esp32",
+  "esp32s2",
+  "esp32c3",
+  "esp32s3",
+  "esp32c2",
+  "esp32c6",
+  "esp32h2"
+}
+
+local select_target = function()
+  pickers.new({}, {
+    prompt_title = "Select ESP-IDF Target",
+    finder = finders.new_table(esp_targets),
+    attach_mappings = function(prompt_bufnr, _)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+
+        local selection = action_state.get_selected_entry()
+        local target = selection.value
+
+        -- Run idf.py set-target with the selected target
+        run_cmd("idf.py set-target ", target, 9)
+        vim.notify("Target set to: " .. target)
+      end)
+      return true
+    end,
+    sorter = conf.generic_sorter({}),
+  }):find();
+end
+
 local add_library = function()
   local library = vim.fn.input("Library name or url: ", "")
 
   if (library == nil or library == "") then return end
 
-  vim.cmd("8TermExec direction=float cmd='\rclear\rUUID=" .. workspace_uuid .. " pio pkg install -l  " .. library .. "'")
+  run_cmd("idf.py add-dependency ", library, 7)
 end
 
 local maps = neovim.get_clean_mappings()
@@ -297,7 +333,9 @@ maps.n[prefix .. "E"] = { deselect_env, desc = "[IDF] Deselect env" }
 maps.n[prefix .. "i"] = { show_info, desc = "[IDF] Show info" }
 maps.n[prefix .. "m"] = { open_monitor, desc = "[IDF] Open monitor" }
 maps.n[prefix .. "l"] = { add_library, desc = "[IDF] Add library" }
-maps.n[prefix .. "c"] = { compile, desc = "[IDF] Compiledb" }
+maps.n[prefix .. "c"] = { compile, desc = "[IDF] Compile" }
+maps.n[prefix .. "C"] = { menu_config, desc = "[IDF] Menu config" }
+maps.n[prefix .. "t"] = { select_target, desc = "[IDF] Select target" }
 maps.n[prefix .. "M"] = {
   function()
     kill_monitor()
