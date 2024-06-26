@@ -29,6 +29,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
+export PATH="$HOME/.docker/bin:$PATH"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 
@@ -55,3 +57,7 @@ source <(kubectl completion zsh)
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+export STM32CubeMX_PATH=/Applications/STM32CubeMX.app/Contents/Resources
+
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
