@@ -82,6 +82,23 @@ require('kanagawa').setup({
       LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
       MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 
+      -- Treesitter-specific customizations (VSCode Dark+ inspired theme)
+      ["@comment"] = { fg = "#608B4E", italic = true }, -- Greenish grey for comments
+      ["@keyword"] = { fg = "#569CD6", bold = true }, -- Blue for keywords
+      ["@string"] = { fg = "#CE9178" },           -- Reddish for strings
+      ["@function"] = { fg = "#DCDCAA", bold = true }, -- Light yellow for functions
+      ["@variable"] = { fg = "#9CDCFE" },         -- Light blue for variables
+      ["@type"] = { fg = "#4EC9B0" },             -- Aquamarine for types
+      ["@constant"] = { fg = "#B5CEA8" },         -- Greenish for constants
+      ["@parameter"] = { fg = "#DCDCAA" },        -- Light yellow for parameters
+      ["@punctuation"] = { fg = "#D4D4D4" },      -- Light gray for punctuation
+
+      -- Additional customizations for finer control
+      ["@text.todo"] = { fg = "#569CD6", bold = true },            -- Blue for TODO
+      ["@text.note"] = { fg = "#4EC9B0", italic = true },          -- Aquamarine for notes
+      ["@text.warning"] = { fg = "#D7BA7D", bold = true },         -- Orange for warnings
+      ["@text.danger"] = { fg = "#F44747", bold = true, italic = true }, -- Red for dangers
+
     }
   end,
   theme = "wave",  -- Load "wave" theme when 'background' option is not set
