@@ -60,9 +60,14 @@ local deselect_env = function()
   vim.notify("Deselected env")
 end
 
-local run_cmd = function(task, params, terminal_id, workspace_uuid)
+local run_cmd = function(task, params, terminal_id, init_idf)
+  if init_idf == nil then init_idf = true end
+
   -- Ensure the path to esp-idf export.sh
-  local idf_init_sh = "if [ -z $IDF_PATH ]; then get_idf; fi;"
+  local idf_init_sh = ""
+  if init_idf then
+    idf_init_sh = "if [ -z $IDF_PATH ]; then get_idf; fi;"
+  end
 
 
   local cmd = string.format(
@@ -134,6 +139,7 @@ local get_pio_envs = function()
 
   return envs
 end
+
 
 local get_serial_devices = function()
   local boards = {}
@@ -238,6 +244,27 @@ local upload_fs = function()
 end
 
 
+local kill_simulator = function()
+  os.execute("pkill -f " .. workspace_uuid .. "  /bin/main")
+end
+
+local run_simulator = function()
+  local cwd = vim.fn.getcwd()
+
+
+  local cmd = string.format(
+    "UUID=%s cd %s/build/ ; make -j ; cd %s ; ./bin/main'",
+    workspace_uuid,
+    cwd,
+    cwd
+  )
+
+
+  kill_simulator()
+  run_cmd(cmd, "", 6, false)
+end
+
+
 local upload = function()
   local env = get_env()
 
@@ -336,6 +363,8 @@ maps.n[prefix .. "l"] = { add_library, desc = "[IDF] Add library" }
 maps.n[prefix .. "c"] = { compile, desc = "[IDF] Compile" }
 maps.n[prefix .. "C"] = { menu_config, desc = "[IDF] Menu config" }
 maps.n[prefix .. "t"] = { select_target, desc = "[IDF] Select target" }
+maps.n[prefix .. "r"] = { run_simulator, desc = "[LVGL] Run simulator" }
+maps.n[prefix .. "R"] = { kill_simulator, desc = "[LVGL] Kill simulator" }
 maps.n[prefix .. "M"] = {
   function()
     kill_monitor()

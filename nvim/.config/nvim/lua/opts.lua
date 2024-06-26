@@ -42,7 +42,9 @@ opt.cursorline = true
 opt.cursorlineopt = 'both'
 
 -- Use system clipboard
-opt.clipboard = 'unnamedplus'
+-- opt.clipboard = 'unnamedplus'
+
+opt.clipboard = ""
 
 -- Set borders for hover
 vim.lsp.handlers["textDocument/hover"] =

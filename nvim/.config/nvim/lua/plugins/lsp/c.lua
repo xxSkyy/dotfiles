@@ -1,8 +1,3 @@
--- require 'lspconfig'.sourcekit.setup {
---   capabilities = neovim.capabilities
--- }
-
-
 local clangd = "clangd"
 
 -- Mac path, modified for platformio and esp32 compatibility

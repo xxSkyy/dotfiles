@@ -12,6 +12,7 @@ maps.n = {
   ['<Right>'] = { '<Nop>' },
   ['<C-d>'] = { "<C-d>zz" },
   ['<C-u>'] = { "<C-u>zz" },
+
   ['n'] = { "nzzzv" },
   ['N'] = { "Nzzzv" }
 }
@@ -20,6 +21,38 @@ maps.n = {
 maps.n[',p'] = { '"0p' }
 maps.n[',P'] = { '"0P' }
 maps.v['<leader>p'] = { '"_dP', desc = "Paste on selection without yank" }
+
+-- Clipboard mappings
+maps.n['Cy'] = { '"+y', desc = "Copy to system clipboard" }
+maps.n['CY'] = { '"+Y', desc = "Copy line to system clipboard (Y)" }
+maps.n['Cd'] = { '"+d', desc = "Delete to system clipboard" }
+maps.n['CD'] = { '"+D', desc = "Delete to end of line to system clipboard" }
+maps.n['Cc'] = { '"+c', desc = "Change with system clipboard" }
+maps.n['CC'] = { '"+C', desc = "Change to end of line with system clipboard" }
+maps.n['Cp'] = { '"+p', desc = "Paste from system clipboard" }
+
+maps.v['Cy'] = { '"+y', desc = "Copy selection to system clipboard" }
+maps.v['CY'] = { '"+Y', desc = "Copy line selection to system clipboard" }
+maps.v['Cd'] = { '"+d', desc = "Delete selection to system clipboard" }
+maps.v['CD'] = { '"+D', desc = "Delete full line selection to system clipboard" }
+maps.v['Cc'] = { '"+c', desc = "Change selection with system clipboard" }
+maps.v['Cp'] = { '"+p', desc = "Paste from system clipboard" }
+
+-- Nvim clipboard mappings (separation from system clipboard)
+maps.n['y'] = { '"1y', desc = "Copy" }
+maps.n['Y'] = { '"1Y', desc = "Copy line (Y)" }
+maps.n['d'] = { '"1d', desc = "Delete" }
+maps.n['D'] = { '"1D', desc = "Delete to end of line" }
+maps.n['c'] = { '"1c', desc = "Change" }
+maps.n['p'] = { '"1p', desc = "Paste" }
+
+maps.v['y'] = { '"1y', desc = "Copy selection " }
+maps.v['Y'] = { '"1Y', desc = "Copy line selection " }
+maps.v['d'] = { '"1d', desc = "Delete selection " }
+maps.v['D'] = { '"1D', desc = "Delete full line selection " }
+maps.v['c'] = { '"1c', desc = "Change selection" }
+maps.v['p'] = { '"1p', desc = "Paste" }
+
 
 -- Remove useless whitespaces from end of lines
 -- map('n', '<F5>', [[:%s/\s\+$//e<CR>]], {})
@@ -31,13 +64,6 @@ if not neovim.is_vscode() then
   maps.n["<leader>fn"] = { "<cmd>enew<cr>", desc = "New File" }
   -- maps.n["gx"] = { function() neovim.system_open() end, desc = "Open the file under cursor with system app" }
   maps.n["Q"] = "<Nop>"
-
-  -- Packer
-  -- maps.n["<leader>pc"] = { "<cmd>PackerCompile<cr>", desc = "Packer Compile" }
-  -- maps.n["<leader>pi"] = { "<cmd>PackerInstall<cr>", desc = "Packer Install" }
-  -- maps.n["<leader>ps"] = { "<cmd>PackerSync<cr>", desc = "Packer Sync" }
-  -- maps.n["<leader>pS"] = { "<cmd>PackerStatus<cr>", desc = "Packer Status" }
-  -- maps.n["<leader>pu"] = { "<cmd>PackerUpdate<cr>", desc = "Packer Update" }
 
   -- CodeAction Menu
   maps.n["<leader>a"] = { "<cmd>CodeActionMenu<cr>", desc = "Code action menu" }
@@ -343,6 +369,11 @@ if not neovim.is_vscode() then
     "<cmd>Telescope live_grep_args<CR>",
     desc = "Live grep args"
   }
+  maps.n["<C-G>"] = {
+    "<cmd>Telescope live_grep_args hidden=true<CR>",
+    desc = "Live grep args including hidden"
+  }
+
   maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
   -- maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
   maps.n["<C-y>"] = {

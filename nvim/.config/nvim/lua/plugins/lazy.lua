@@ -56,6 +56,18 @@ require('lazy').setup({
 
   -- Filesystem navigation & icons
   { 'kyazdani42/nvim-tree.lua', dependencies = 'nvim-tree/nvim-web-devicons' },
+  {
+    {
+      "antosha417/nvim-lsp-file-operations",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-tree.lua",
+      },
+      config = function()
+        require("lsp-file-operations").setup()
+      end,
+    },
+  },
 
   -- Comment out engine
   {
@@ -283,7 +295,34 @@ require('lazy').setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {}
+    opts = {},
+    config = function()
+      local highlight = {
+        "OchreYellow",
+        "WaveBlue",
+        "PeachRed",
+        "SpringGreen",
+        "LightViolet",
+        "Teal",
+        "AutumnRed",
+      }
+
+      local hooks = require "ibl.hooks"
+
+      -- Create the highlight groups in the highlight setup hook, so they are reset
+      -- every time the colorscheme changes
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "AutumnRed", { fg = "#C34043" })   -- AutumnRed
+        vim.api.nvim_set_hl(0, "OchreYellow", { fg = "#DCA561" }) -- OchreYellow
+        vim.api.nvim_set_hl(0, "WaveBlue", { fg = "#7FB4CA" })    -- WaveBlue
+        vim.api.nvim_set_hl(0, "PeachRed", { fg = "#FF9E3B" })    -- PeachRed
+        vim.api.nvim_set_hl(0, "SpringGreen", { fg = "#76946A" }) -- SpringGreen
+        vim.api.nvim_set_hl(0, "LightViolet", { fg = "#957FB8" }) -- LightViolet (custom)
+        vim.api.nvim_set_hl(0, "Teal", { fg = "#7AA89F" })        -- Teal
+      end)
+
+      require("ibl").setup { indent = { highlight = highlight } }
+    end
   },
 
   -- Another commenting
@@ -338,18 +377,6 @@ require('lazy').setup({
 
   -- Pretty hover
   { "Fildo7525/pretty_hover" },
-
-  -- Dim inactive windows/panes
-  -- {
-  --   "miversen33/sunglasses.nvim",
-  --   config = function()
-  --     local sunglasses_options = {
-  --       filter_type = "SHADE",
-  --       filter_percent = 0.2
-  --     }
-  --     neovim.require("sunglasses", sunglasses_options)
-  --   end
-  -- },
 
   -- SQL LSP
   'nanotee/sqls.nvim',
