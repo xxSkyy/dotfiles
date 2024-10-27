@@ -28,10 +28,10 @@ telescope.setup {
       i = {
         ["<Tab>"] = actions.move_selection_next,
         ["<S-Tab>"] = actions.move_selection_previous,
-        ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous
+        ["<C-j>"] = actions.cycle_history_next,
+        ["<C-k>"] = actions.cycle_history_prev,
+        ["<C-up>"] = actions.cycle_history_next,
+        ["<C-down>"] = actions.cycle_history_prev,
       },
       n = { ["q"] = actions.close }
     }

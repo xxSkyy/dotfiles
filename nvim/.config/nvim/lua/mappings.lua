@@ -69,33 +69,21 @@ if not neovim.is_vscode() then
   maps.n["<leader>a"] = { "<cmd>CodeActionMenu<cr>", desc = "Code action menu" }
 
   -- Trouble
-  maps.n["<leader>xx"] = {
-    "<cmd>TroubleToggle<cr>",
-    desc = "Toggle touble window"
-  }
-  maps.n["<leader>xw"] = {
-    "<cmd>Trouble workspace_diagnostics<cr>",
+  maps.n["<leader>xl"] = {
+    "<cmd>Trouble lsp toggle<cr>",
     desc = "Trouble workspace window"
   }
   maps.n["<leader>xd"] = {
-    "<cmd>Trouble document_diagnostics<cr>",
+    "<cmd>Trouble diagnostics toggle<cr>",
     desc = "Trouble document window"
   }
   maps.n["<leader>xq"] = {
-    "<cmd>Trouble quickfix<cr>",
+    "<cmd>Trouble qflist toggle<cr>",
     desc = "Trouble quickfix window"
   }
   maps.n["<leader>xl"] = {
-    "<cmd>Trouble loclist<cr>",
+    "<cmd>Trouble lsp toggle<cr>",
     desc = "Trouble loclist window"
-  }
-  maps.n["<leader>xr"] = {
-    "<cmd>Trouble lsp_references<cr>",
-    desc = "Trouble lsp reference window"
-  }
-  maps.n["<leader>xc"] = {
-    "<cmd>TroubleClose<cr>",
-    desc = "Close trouble window"
   }
 
   -- LSP

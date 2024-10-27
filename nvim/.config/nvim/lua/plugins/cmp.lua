@@ -74,6 +74,8 @@ cmp.setup {
         fallback()
       end
     end,
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<S-Tab>'] = function(fallback)
       local luasnip = require 'luasnip'
 

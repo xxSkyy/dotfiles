@@ -7,7 +7,6 @@ local palettes = {
     green = nightfox_shade.new("#a3be8c", "#b1d196", "#8aa872"),
     yellow = nightfox_shade.new("#dbc074", 0.15, -0.15),
     blue = nightfox_shade.new("#569fba", "#65b1cd", "#4a869c"),
-    -- magenta = Shade.new("#c4a7e7", "#ccb1ed", "#a580d2"),
     magenta = nightfox_shade.new("#9d79d6", 0.15, -0.15),
     cyan = nightfox_shade.new("#9ccfd8", "#a6dae3", "#7bb8c1"),
     white = nightfox_shade.new("#dddddf", 0.15, -0.15),

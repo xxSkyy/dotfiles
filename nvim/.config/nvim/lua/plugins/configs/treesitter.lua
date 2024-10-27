@@ -25,28 +25,4 @@ require 'nvim-treesitter.configs'.setup {
   endwise = {
     enable = true,
   },
-  autotag = {
-    enable = true,
-    enable_close_on_slash = false,
-    filetypes = {
-      'html',
-      'javascript',
-      'typescript',
-      'javascriptreact',
-      'typescriptreact',
-      'svelte',
-      'vue',
-      'tsx',
-      'jsx',
-      'rescript',
-      'xml',
-      'php',
-      'markdown',
-      'glimmer',
-      'handlebars',
-      'hbs',
-      'rust',
-      'go',
-    }
-  },
 }

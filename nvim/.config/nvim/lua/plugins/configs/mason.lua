@@ -15,8 +15,10 @@ neovim.require('mason-lspconfig', {
     "gopls",
     "jdtls",
     "clangd",
+    "html",
     "prismals",
     "bashls",
-    "lua_ls"
+    "lua_ls",
+    "cssls",
   },
 })
