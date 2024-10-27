@@ -172,14 +172,6 @@ if not neovim.is_vscode() then
   }
 
   -- Dapui
-  maps.n["<leader>bo"] = {
-    function() require("dapui").open() end,
-    desc = "DapUI Open"
-  }
-  maps.n["<leader>bc"] = {
-    function() require("dapui").close() end,
-    desc = "DapUI Close"
-  }
   maps.n["<leader>bt"] = {
     function() require("dapui").toggle() end,
     desc = "DapUI Toggle"
@@ -245,32 +237,6 @@ if not neovim.is_vscode() then
     silent = true,
     noremap = true,
     desc = "Delete package.json dependency"
-  }
-
-  -- Harpoon
-  maps.n["<leader>hh"] = {
-    function() require("harpoon.ui").toggle_quick_menu() end,
-    desc = "Next git hunk"
-  }
-  maps.n["<leader>ha"] = {
-    function() require("harpoon.mark").add_file() end,
-    desc = "Previous git hunk"
-  }
-  maps.n["<leader>hd"] = {
-    function() require("harpoon.mark").rm_file() end,
-    desc = "Previous git hunk"
-  }
-  maps.n["<leader>hc"] = {
-    function() require("harpoon.mark").clear_all() end,
-    desc = "Previous git hunk"
-  }
-  maps.n["<leader>hn"] = {
-    function() require("harpoon.ui").nav_next() end,
-    desc = "Previous git hunk"
-  }
-  maps.n["<leader>hp"] = {
-    function() require("harpoon.ui").nav_prev() end,
-    desc = "Previous git hunk"
   }
 
   -- LazyGit
@@ -348,22 +314,22 @@ if not neovim.is_vscode() then
     silent = true
   }
 
-  maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
-  maps.n["<C-P>"] = {
-    "<cmd>Telescope find_files hidden=true<CR>",
-    desc = "Find file including hidden"
-  }
-  maps.n["<C-g>"] = {
-    "<cmd>Telescope live_grep_args<CR>",
-    desc = "Live grep args"
-  }
-  maps.n["<C-G>"] = {
-    "<cmd>Telescope live_grep_args hidden=true<CR>",
-    desc = "Live grep args including hidden"
-  }
+  -- maps.n["<C-p>"] = { "<cmd>Telescope find_files<CR>", desc = "Find file" }
+  -- maps.n["<C-P>"] = {
+  --   "<cmd>Telescope find_files hidden=true<CR>",
+  --   desc = "Find file including hidden"
+  -- }
+  -- maps.n["<C-g>"] = {
+  --   "<cmd>Telescope live_grep_args<CR>",
+  --   desc = "Live grep args"
+  -- }
+  -- maps.n["<C-G>"] = {
+  --   "<cmd>Telescope live_grep_args hidden=true<CR>",
+  --   desc = "Live grep args including hidden"
+  -- }
 
-  maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
-  -- maps.n["<C-y>"] = { "<cmd>HopWord<CR>" }
+  -- maps.n["<leader>lg"] = { "<cmd>Telescope live_grep<CR>", desc = "Live grep" }
+
   maps.n["<C-y>"] = {
     "<cmd>lua require('leap').leap { target_windows = { vim.fn.win_getid() } }<CR>"
   }
@@ -421,31 +387,39 @@ if not neovim.is_vscode() then
   }
 
   -- Resize with arrows
-  maps.n["<C-Up>"] = {
+  maps.n["<leader>k"] = {
     function() require("smart-splits").resize_up() end,
     desc = "Resize split up"
   }
-  maps.n["<C-Down>"] = {
+  maps.n["<leader>j"] = {
     function() require("smart-splits").resize_down() end,
     desc = "Resize split down"
   }
-  maps.n["<C-Left>"] = {
+  maps.n["<leader>h"] = {
     function() require("smart-splits").resize_left() end,
     desc = "Resize split left"
   }
-  maps.n["<C-Right>"] = {
+  maps.n["<leader>l"] = {
     function() require("smart-splits").resize_right() end,
     desc = "Resize split right"
   }
 
-  -- maps.n["<C-h>"] = { "<C-w>h", desc = "Move to left split" }
-  -- maps.n["<C-j>"] = { "<C-w>j", desc = "Move to below split" }
-  -- maps.n["<C-k>"] = { "<C-w>k", desc = "Move to above split" }
-  -- maps.n["<C-l>"] = { "<C-w>l", desc = "Move to right split" }
-  -- maps.n["<C-Up>"] = { "<cmd>resize -2<CR>", desc = "Resize split up" }
-  -- maps.n["<C-Down>"] = { "<cmd>resize +2<CR>", desc = "Resize split down" }
-  -- maps.n["<C-Left>"] = { "<cmd>vertical resize -2<CR>", desc = "Resize split left" }
-  -- maps.n["<C-Right>"] = { "<cmd>vertical resize +2<CR>", desc = "Resize split right" }
+  maps.n["<C-w>k"] = {
+    function() require("smart-splits").swap_buf_up() end,
+    desc = "Swap split up"
+  }
+  maps.n["<C-w>j"] = {
+    function() require("smart-splits").swap_buf_down() end,
+    desc = "Swap split down"
+  }
+  maps.n["<C-w>h"] = {
+    function() require("smart-splits").swap_buf_left() end,
+    desc = "Sawp split left"
+  }
+  maps.n["<C-w>l"] = {
+    function() require("smart-splits").swap_buf_right() end,
+    desc = "Swap split right"
+  }
 
   -- Telescope
   maps.n["<leader>fw"] = {
@@ -488,18 +462,9 @@ if not neovim.is_vscode() then
     end,
     desc = "Search all files"
   }
-
-  maps.n["<leader>fb"] = {
+  maps.n["<leader>sb"] = {
     function() require("telescope.builtin").buffers() end,
     desc = "Search buffers"
-  }
-  maps.n["<leader>fh"] = {
-    function() require("telescope.builtin").help_tags() end,
-    desc = "Search help"
-  }
-  maps.n["<leader>fm"] = {
-    function() require("telescope.builtin").marks() end,
-    desc = "Search marks"
   }
   maps.n["<leader>fo"] = {
     function() require("telescope.builtin").oldfiles() end,
@@ -509,17 +474,9 @@ if not neovim.is_vscode() then
     function() require("telescope.builtin").grep_string() end,
     desc = "Search for word under cursor"
   }
-  maps.n["<leader>sb"] = {
-    function() require("telescope.builtin").git_branches() end,
-    desc = "Git branches"
-  }
   maps.n["<leader>sh"] = {
     function() require("telescope.builtin").help_tags() end,
     desc = "Search help"
-  }
-  maps.n["<leader>sm"] = {
-    function() require("telescope.builtin").man_pages() end,
-    desc = "Search man"
   }
   maps.n["<leader>sr"] = {
     function() require("telescope.builtin").registers() end,

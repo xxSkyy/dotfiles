@@ -54,7 +54,17 @@ require('lazy').setup({
     config = function() neovim.require('smart-splits') end
   },
 
-  { 'kevinhwang91/nvim-ufo',    dependencies = 'kevinhwang91/promise-async' },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
+    config = function()
+      require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end
+      })
+    end
+  },
 
   -- Filesystem navigation & icons
   { 'kyazdani42/nvim-tree.lua', dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -245,7 +255,7 @@ require('lazy').setup({
   "habamax/vim-godot",
 
   -- Multiple terminals, floating etc
-  { "akinsho/toggleterm.nvim",                     version = '*' },
+  { "akinsho/toggleterm.nvim",              version = '*' },
 
   -- Shows git decorations
   {
@@ -285,6 +295,20 @@ require('lazy').setup({
   -- Fancy notifications
   {
     'rcarriga/nvim-notify',
+    opts = {
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.60)
+      end,
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { focusable = false })
+      end,
+      render = "default",
+      stages = "fade_in_slide_out",
+    },
     config = function()
       require("notify").setup({ background_colour = "#000000" })
     end
@@ -294,8 +318,9 @@ require('lazy').setup({
   {
     "folke/which-key.nvim",
     config = function() neovim.require('which-key') end
-  }, -- Java
+  },
 
+  -- Java
   'mfussenegger/nvim-jdtls',
 
   -- Auto pairs plugin
@@ -356,11 +381,6 @@ require('lazy').setup({
   -- Another commenting
   "JoosepAlviste/nvim-ts-context-commentstring",
 
-
-  -- Arduino
-  'stevearc/vim-arduino',
-  'edKotinsky/Arduino.nvim',
-
   {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim" }
@@ -389,22 +409,31 @@ require('lazy').setup({
     "j-hui/fidget.nvim",
     tag = "legacy",
     opts = {
-      -- options
     }
   },
 
   { "davidosomething/format-ts-errors.nvim" },
+  {
+    "OlegGulevskyy/better-ts-errors.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = {
+      keymaps = {
+        toggle = '<leader>dd',          -- default '<leader>dd'
+        go_to_definition = '<leader>dx' -- default '<leader>dx'
+      }
+    }
+  },
 
   -- Lsp lines errors
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 
-  {
-    'ThePrimeagen/harpoon',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-
   -- Pretty hover
-  { "Fildo7525/pretty_hover" },
+  {
+    "Fildo7525/pretty_hover",
+    event = "LspAttach",
+    opts = {}
+
+  },
 
   -- SQL LSP
   'nanotee/sqls.nvim',
