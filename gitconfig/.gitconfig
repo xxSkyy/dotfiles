@@ -12,5 +12,6 @@
 	ui = true
 [core]
 	editor = nvim --wait
+	excludesfile = /Users/sky/.gitignore_global
 [init]
 	defaultBranch = master
