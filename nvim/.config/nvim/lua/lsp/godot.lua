@@ -1,3 +1,3 @@
-require 'lspconfig'.gdscript.setup {
-  capabilities = neovim.capabilities,
-}
+require("lspconfig").gdscript.setup({
+	capabilities = neovim.capabilities,
+})
