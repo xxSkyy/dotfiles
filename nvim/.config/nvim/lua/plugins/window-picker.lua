@@ -1,7 +1,11 @@
 return {
 	"s1n7ax/nvim-window-picker",
-	version = "v1.*",
+	event = "VeryLazy",
+	version = "v2.*",
+	show_prompt = true,
 	opts = {
+		hint = "floating-big-letter",
+		show_prompt = false,
 		autoselect_one = true,
 		include_current = false,
 		filter_rules = {
