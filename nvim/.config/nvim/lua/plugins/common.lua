@@ -12,26 +12,6 @@ return {
     build = ":TSUpdate",
   },
 
-  -- Completion
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
-      -- Snippets engine
-      {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp",
-      },
-    }
-  },
 
   -- Inlay hints
   {
@@ -39,15 +19,8 @@ return {
     config = function() neovim.require('inlay-hints') end
   },
 
-  { "nvim-neotest/nvim-nio" },
 
   -- Surround edits
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    config = function() neovim.require('nvim-surround') end
-  },
 
   {
     'mrjones2014/smart-splits.nvim',
@@ -88,13 +61,6 @@ return {
   },
 
   -- Telescope
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-      { "nvim-telescope/telescope-live-grep-args.nvim" }
-    }
-  },
 
   -- Sort lines
   "sQVe/sort.nvim",
@@ -132,16 +98,6 @@ return {
   {
     'stevearc/dressing.nvim',
     config = function() neovim.require('dressing') end
-  },
-
-  -- Tree
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim"
-    }
   },
 
   -- Start screen
@@ -185,11 +141,6 @@ return {
   -- Multi cursor
   "mg979/vim-visual-multi",
 
-  {
-    "folke/trouble.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function() neovim.require('trouble') end
-  },
 
   -- Formatter
   "MunifTanjim/prettier.nvim",
@@ -241,35 +192,16 @@ return {
     end
   },
 
-  -- Rust
-  {
-    'saecki/crates.nvim',
-    version = 'v0.2.1',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function() neovim.require('crates') end
-
-  },
-  'simrat39/rust-tools.nvim',
-
   -- Godot
   "habamax/vim-godot",
 
   -- Multiple terminals, floating etc
-  { "akinsho/toggleterm.nvim",              version = '*' },
+  { "akinsho/toggleterm.nvim", version = '*' },
 
   -- Shows git decorations
   {
     'lewis6991/gitsigns.nvim',
     config = function() neovim.require('gitsigns') end
-  },
-
-  -- LazyGit
-  {
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
   },
 
   -- Colorize hex color
@@ -338,6 +270,7 @@ return {
   {
     "nvim-neotest/neotest",
     dependencies = {
+      "nvim-neotest/nvim-nio",
       'marilari88/neotest-vitest', "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim", "haydenmeade/neotest-jest",
       "rouge8/neotest-rust"
@@ -381,58 +314,11 @@ return {
   -- Another commenting
   "JoosepAlviste/nvim-ts-context-commentstring",
 
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-
-  {
-    "jayp0521/mason-null-ls.nvim",
-    config = function() neovim.require('mason-null-ls') end
-  },
-
   -- Package json helper
   {
     "vuki656/package-info.nvim",
     dependencies = "MunifTanjim/nui.nvim",
     config = function() neovim.require('package-info') end
-  },
-
-  -- Better UI
-  {
-    "folke/noice.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-  },
-
-  -- LSP loading progress
-  {
-    "j-hui/fidget.nvim",
-    tag = "legacy",
-    opts = {
-    }
-  },
-
-  { "davidosomething/format-ts-errors.nvim" },
-  {
-    "OlegGulevskyy/better-ts-errors.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    config = {
-      keymaps = {
-        toggle = '<leader>dd',          -- default '<leader>dd'
-        go_to_definition = '<leader>dx' -- default '<leader>dx'
-      }
-    }
-  },
-
-  -- Lsp lines errors
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-
-  -- Pretty hover
-  {
-    "Fildo7525/pretty_hover",
-    event = "LspAttach",
-    opts = {}
-
   },
 
   -- SQL LSP

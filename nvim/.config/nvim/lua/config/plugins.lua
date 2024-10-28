@@ -1,5 +1,4 @@
 -- Packer file
--- require("plugins.packer")
 require("config.lazy")
 require("config.theme")
 
@@ -8,7 +7,6 @@ require("config.theme")
 if not neovim.is_vscode() then
   if vim.g.lsp_setup_ready == nil then
     vim.g.lsp_setup_ready = true
-    require('config.cmp')
 
     -- Plugin custom configs
     neovim.load_folder("configs")
