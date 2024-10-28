@@ -6,10 +6,9 @@ g.background = "dark"
 g.mapleader = ","
 g.localleader = "\\"
 
-
 -- To appropriately highlight codefences returned from denols,
 -- you will need to augment vim.g.markdown_fenced languages
 -- in your init.lua
 g.markdown_fenced_languages = {
-  "ts=typescript"
+	"ts=typescript",
 }
