@@ -10,7 +10,6 @@ require 'lspconfig'.tailwindcss.setup {
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "svelte",
     "vue",
     "rust",
   },

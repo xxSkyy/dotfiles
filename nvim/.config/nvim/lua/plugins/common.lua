@@ -4,9 +4,6 @@ return {
   'neovim/nvim-lspconfig',
   "lukas-reineke/lsp-format.nvim",
 
-  -- LSP UI Installer
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -20,24 +17,6 @@ return {
   },
 
 
-  -- Surround edits
-
-  {
-    'mrjones2014/smart-splits.nvim',
-    config = function() neovim.require('smart-splits') end
-  },
-
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
-    config = function()
-      require('ufo').setup({
-        provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
-        end
-      })
-    end
-  },
 
   -- Filesystem navigation & icons
   { 'kyazdani42/nvim-tree.lua', dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -60,37 +39,11 @@ return {
     config = function() neovim.require('Comment', {}, true) end
   },
 
-  -- Telescope
 
   -- Sort lines
   "sQVe/sort.nvim",
 
-  -- Window picker
-  {
-    's1n7ax/nvim-window-picker',
-    version = 'v1.*',
-    config = function()
-      neovim.require('window-picker', {
-        autoselect_one = true,
-        include_current = false,
-        filter_rules = {
-          -- filter using buffer options
-          bo = {
-            -- if the file type is one of following, the window will be ignored
-            filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-            -- if the buffer type is one of following, the window will be ignored
-            buftype = { 'terminal', "quickfix" }
-          }
-        },
-        other_win_hl_color = '#e35e4f'
-      })
-    end
-  },
 
-  {
-    "tiagovla/scope.nvim",
-    config = function() neovim.require('scope') end
-  },
 
   -- Code action menu
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }, -- Better UI
@@ -100,8 +53,6 @@ return {
     config = function() neovim.require('dressing') end
   },
 
-  -- Start screen
-  { 'mhinz/vim-startify' },
 
   -- Statusline
   {
@@ -109,30 +60,6 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
   },
 
-  -- Tabs
-  {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons'
-  },
-
-  -- Close current buffer
-  {
-    'kazhala/close-buffers.nvim',
-    config = function()
-      neovim.require("close_buffers", {
-        preserve_window_layout = { 'this' },
-        next_buffer_cmd = function(windows)
-          require('bufferline').cycle(1)
-          local bufnr = vim.api.nvim_get_current_buf()
-
-          for _, window in ipairs(windows) do
-            vim.api.nvim_win_set_buf(window, bufnr)
-          end
-        end
-      })
-    end
-  },
 
   -- Themes
   "EdenEast/nightfox.nvim",
@@ -148,17 +75,6 @@ return {
   -- Jumping over words
   "ggandor/leap.nvim",
 
-  "folke/lua-dev.nvim",
-
-  {
-    "imNel/monorepo.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"
-    },
-    config = function()
-      neovim.require("monorepo", { autoload_telescope = false })
-    end
-  },
 
   -- Treesitter autoclose and autorename html tags
   {
@@ -174,7 +90,6 @@ return {
           'typescript',
           'javascriptreact',
           'typescriptreact',
-          'svelte',
           'vue',
           'tsx',
           'jsx',
@@ -195,56 +110,8 @@ return {
   -- Godot
   "habamax/vim-godot",
 
-  -- Multiple terminals, floating etc
-  { "akinsho/toggleterm.nvim", version = '*' },
-
-  -- Shows git decorations
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function() neovim.require('gitsigns') end
-  },
-
   -- Colorize hex color
   'NvChad/nvim-colorizer.lua',
-
-  -- Show matching words
-  {
-    "RRethy/vim-illuminate",
-    config = function()
-      if not neovim.is_vscode() then
-        require('illuminate').configure({
-          modes_denylist = { 'v' },
-          providers = {
-            'lsp',
-            -- 'treesitter',
-            'regex',
-          },
-        })
-      end
-    end
-  },
-
-  -- Fancy notifications
-  {
-    'rcarriga/nvim-notify',
-    opts = {
-      timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.60)
-      end,
-      on_open = function(win)
-        vim.api.nvim_win_set_config(win, { focusable = false })
-      end,
-      render = "default",
-      stages = "fade_in_slide_out",
-    },
-    config = function()
-      require("notify").setup({ background_colour = "#000000" })
-    end
-  },
 
   -- Key helper
   {
@@ -323,40 +190,4 @@ return {
 
   -- SQL LSP
   'nanotee/sqls.nvim',
-
-  -- Database
-  {
-    "tpope/vim-dadbod",
-    lazy = true,
-
-    dependencies = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion"
-    },
-
-    config = function()
-      vim.g.db_ui_save_location = vim.fn.stdpath "config" ..
-          require("plenary.path").path.sep ..
-          "db_ui"
-
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = {
-      --     "sql",
-      --   },
-      --   command = [[setlocal omnifunc=vim_dadbod_completion#omni]],
-      -- })
-
-      vim.api.nvim_create_autocmd("FileType",
-        { pattern = { "sql", "mysql", "plsql" } })
-    end,
-
-    cmd = {
-      "DBUIToggle",
-      "DBUI",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-      "DBUIRenameBuffer",
-      "DBUILastQueryInfo"
-    }
-  }
 }
