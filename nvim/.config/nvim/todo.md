@@ -1,2 +1,0 @@
-- handle clipboard copy paste better way than yank, overwrite, delete = add to clipboard
-- cmp windows are too big - especially docs, and suggestions are too wide, on smaller screen it becomes too large
