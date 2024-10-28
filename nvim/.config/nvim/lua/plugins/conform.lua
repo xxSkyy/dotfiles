@@ -5,17 +5,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+local js_like_config = { "prettierd", "prettier", lsp_format = "fallback", stop_after_first = true }
+
 return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- Conform will run multiple formatters sequentially
-			python = { "isort", "black" },
-			-- You can customize some of the format options for the filetype (:help conform.format)
 			rust = { "rustfmt", lsp_format = "fallback" },
-			-- Conform will run the first available formatter
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			javascript = js_like_config,
+			typescript = js_like_config,
+			vue = js_like_config,
+			react = js_like_config,
 		},
 	},
 	format_on_save = {
