@@ -1,3 +1,3 @@
-require 'lspconfig'.gopls.setup {
-  capabilities = neovim.capabilities
-}
+require("lspconfig").gopls.setup({
+	capabilities = neovim.capabilities,
+})

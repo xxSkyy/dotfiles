@@ -10,7 +10,6 @@ require 'lspconfig'.tsserver.setup {
     },
   },
   server = {
-    on_attach = require("lsp-format").on_attach,
     capabilities = neovim.capabilities
   },
 
