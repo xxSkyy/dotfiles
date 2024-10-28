@@ -1,5 +1,5 @@
 --- Put in this file all plugins
-require('lazy').setup({
+return {
   -- LSP
   'neovim/nvim-lspconfig',
   "lukas-reineke/lsp-format.nvim",
@@ -473,4 +473,4 @@ require('lazy').setup({
       "DBUILastQueryInfo"
     }
   }
-})
+}
