@@ -10,8 +10,6 @@ return {
 	-- Shows git decorations
 	{
 		"lewis6991/gitsigns.nvim",
-		config = function()
-			neovim.require("gitsigns")
-		end,
+		opts = {},
 	},
 }

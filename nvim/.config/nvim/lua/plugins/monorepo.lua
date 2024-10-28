@@ -4,7 +4,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"nvim-lua/plenary.nvim",
 	},
-	config = function()
-		neovim.require("monorepo", { autoload_telescope = false })
-	end,
+	opts = {
+		autoload_telescope = false,
+	},
 }

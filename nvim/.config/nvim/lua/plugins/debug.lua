@@ -4,7 +4,7 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		config = function()
-			neovim.require("dapui")
+			require("dapui").setup({})
 
 			-- Dap for GDScript
 			-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#godot-gdscript

@@ -1,4 +1,4 @@
 return {
-  'mrjones2014/smart-splits.nvim',
-  config = function() neovim.require('smart-splits') end
+	"mrjones2014/smart-splits.nvim",
+	opts = {},
 }
