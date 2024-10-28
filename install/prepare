@@ -16,7 +16,9 @@ if [[ $INSTALL_OS ]]; then
   folders_list+=$os_folders
 fi
 
-# Remove dangling las "," from list of folders
-folders_list=${folders_list::-1} 
+# Remove dangling las "," from list of folders if folders_list is not empty
+# if [[ -n $folders_list ]]; then
+#   folders_list=${folders_list::-1} 
+# fi
 
 STOW_FOLDERS=$folders_list DOTFILES=$DOTFILES $DOTFILES/$config_dir/install
