@@ -355,6 +355,7 @@ end
 local maps = neovim.get_clean_mappings()
 local prefix = "A"
 
+maps.n[prefix] = { "<cmd>WhichKey A<cr>", noremap = true, silent = true }
 maps.n[prefix .. "s"] = { select_device, desc = "[IDF] Select serial" }
 maps.n[prefix .. "S"] = { deselect_device, desc = "[IDF] Deselect serial" }
 maps.n[prefix .. "e"] = { select_env, desc = "[IDF] Select env" }
