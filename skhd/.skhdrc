@@ -51,6 +51,9 @@ lalt - e : yabai -m window --toggle split
 # balance size of windows
 shift + lalt - 0 : yabai -m space --balance
 
+# swap between displays
+cmd + shift - h : yabai -m display --focus west
+cmd + shift - l : yabai -m display --focus east 
 
 # lalt - 1 : yabai -m space --focus 1
 # lalt - 2 : yabai -m space --focus 2

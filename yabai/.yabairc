@@ -47,8 +47,9 @@ yabai -m rule --add app="^Creative Cloud$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add app="Raycast" manage=off
+yabai -m rule --add app="appRX8-HMI-DISPLAY" manage=off
 yabai -m rule --add app="^Music$" manage=off
-yabai -m rule --add app="^float$" manage=off
 yabai -m rule --add app="^main$" manage=off
+yabai -m rule --add title="^BypassFloat$" manage=off
 
 echo "yabai configuration loaded.."

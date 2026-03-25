@@ -25,14 +25,17 @@ source $ZSH/oh-my-zsh.sh
 # Starship top bar
 eval "$(starship init zsh)"
 
+# export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="/opt/homebrew/bin:$PATH"
 
+
 export PATH="$HOME/.docker/bin:$PATH"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 
 alias ionic:sync='yarn build && yarn cap sync ios'
 alias ionic:build='yarn build && yarn cap run ios'
@@ -60,4 +63,20 @@ export PATH="$PNPM_HOME:$PATH"
 
 export STM32CubeMX_PATH=/Applications/STM32CubeMX.app/Contents/Resources
 
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias get_idf='. $HOME/.espressif/v5.5.3/esp-idf/export.sh'
+
+
+# . "/Users/sky/.deno/env"
+
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/sky/.lmstudio/bin"
+
+# pnpm
+export PNPM_HOME="/Users/sky/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

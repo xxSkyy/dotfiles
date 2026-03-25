@@ -16,6 +16,12 @@ return {
 				port = 6006,
 			}
 
+			dap.adapters.lldb = {
+				type = "executable",
+				command = "/usr/bin/lldb-vscode", -- adjust as needed
+				name = "lldb",
+			}
+
 			dap.configurations.gdscript = {
 				{
 					type = "godot",

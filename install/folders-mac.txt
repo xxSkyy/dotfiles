@@ -1,3 +1,4 @@
 yabai
 skhd
 mac
+aerospace
