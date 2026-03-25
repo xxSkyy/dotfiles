@@ -56,11 +56,31 @@ alt-s = 'layout v_accordion'               # Stacking (i3)
 alt-e = 'layout tiles horizontal vertical' # Toggle Split (i3)
 
 # Workspaces
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
+alt-1 = [
+  'workspace 1',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 1"',
+]
+alt-2 = [
+  'workspace 2',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 2"',
+]
+alt-3 = [
+  'workspace 3',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 3"',
+]
+alt-4 = [
+  'workspace 4',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 4"',
+]
+alt-5 = [
+  'workspace 5',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 4"',
+]
+# alt-1 = 'workspace 1'
+# alt-2 = 'workspace 2'
+# alt-3 = 'workspace 3'
+# alt-4 = 'workspace 4'
+# alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
@@ -89,19 +109,19 @@ alt-shift-ctrl-j = 'join-with down'
 alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
-#alt-r = 'mode resize'
+alt-r = 'mode resize'
 alt-shift-c = 'reload-config'
 
-alt-u = 'resize width -40'
-alt-p = 'resize width +40'
-alt-o = 'resize height -40'
-alt-i = 'resize height +40'
+# alt-u = 'resize width -40'
+# alt-p = 'resize width +40'
+# alt-o = 'resize height -40'
+# alt-i = 'resize height +40'
 
 [mode.resize.binding]
-#h = 'resize width -40'
-#j = 'resize height +40'
-#k = 'resize height -40'
-#l = 'resize width +40'
+h = 'resize width -40'
+j = 'resize height +40'
+k = 'resize height -40'
+l = 'resize width +40'
 enter = 'mode main'
 esc = 'mode main'
 
