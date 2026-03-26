@@ -7,9 +7,17 @@ lalt - l : aerospace focus --boundaries-action wrap-around-the-workspace right
 
 lalt - e : aerospace layout tiles horizontal vertical
 
+lalt - n : aerospace workspace-back-and-forth
+lalt - s : aerospace layout v_accordion
 
+shift + lalt - h : aerospace move left 
+shift + lalt - j : aerospace move down 
+shift + lalt - k : aerospace move up 
+shift + lalt - l : aerospace move right
 
+shift + lalt - n : aerospace move-node-to-monitor next
 
+shift + lalt - c : aerospace reload-config
 
 
 ##########################

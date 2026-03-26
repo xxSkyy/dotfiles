@@ -44,23 +44,34 @@ outer.right = 10
 # alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 ###
 
-alt-n = 'workspace-back-and-forth'
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-n = 'workspace-back-and-forth'
+###
+
 
 # Move / Swap (shift + lalt - h/j/k/l)
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-shift-h = 'move left'
+# alt-shift-j = 'move down'
+# alt-shift-k = 'move up'
+# alt-shift-l = 'move right'
+###
 
 # Float, Tiling, Split
 alt-f = 'fullscreen'
 alt-t = 'layout floating tiling' # toggle float
 alt-w = 'layout h_accordion'     # Tabbed (i3)
-alt-s = 'layout v_accordion'     # Stacking (i3)
 
 ###
 # Workaround: Moved to skhdrc to work only on left alt
 ###
+# alt-s = 'layout v_accordion'     # Stacking (i3)
 # alt-e = 'layout tiles horizontal vertical' # Toggle Split (i3)
 ###
 
@@ -83,7 +94,7 @@ alt-4 = [
 ]
 alt-5 = [
   'workspace 5',
-  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 4"',
+  'exec-and-forget bash -c "sleep 0.05 && aerospace workspace 5"',
 ]
 # alt-1 = 'workspace 1'
 # alt-2 = 'workspace 2'
@@ -110,7 +121,13 @@ alt-shift-minus = 'move-node-to-workspace S'
 
 cmd-shift-h = 'focus-monitor left'
 cmd-shift-l = 'focus-monitor right'
-alt-shift-n = 'move-node-to-monitor next'
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-shift-n = 'move-node-to-monitor next'
+###
+
 alt-shift-p = 'move-node-to-monitor prev'
 
 alt-shift-ctrl-h = 'join-with left'
@@ -119,7 +136,12 @@ alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
 alt-r = 'mode resize'
-alt-shift-c = 'reload-config'
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-shift-c = 'reload-config'
+###
 
 # alt-u = 'resize width -40'
 # alt-p = 'resize width +40'
