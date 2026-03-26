@@ -34,10 +34,16 @@ outer.right = 10
 [mode.main.binding]
 
 # Focus (lalt - h/j/k/l)
-alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
-alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
-alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
-alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+# alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+# alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+# alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+###
+
 alt-n = 'workspace-back-and-forth'
 
 # Move / Swap (shift + lalt - h/j/k/l)
@@ -49,11 +55,14 @@ alt-shift-l = 'move right'
 # Float, Tiling, Split
 alt-f = 'fullscreen'
 alt-t = 'layout floating tiling' # toggle float
-# alt-r = 'layout tiles horizontal vertical'     # toggle split
-# alt-w = 'layout accordion horizontal vertical'
-alt-w = 'layout h_accordion'               # Tabbed (i3)
-alt-s = 'layout v_accordion'               # Stacking (i3)
-alt-e = 'layout tiles horizontal vertical' # Toggle Split (i3)
+alt-w = 'layout h_accordion'     # Tabbed (i3)
+alt-s = 'layout v_accordion'     # Stacking (i3)
+
+###
+# Workaround: Moved to skhdrc to work only on left alt
+###
+# alt-e = 'layout tiles horizontal vertical' # Toggle Split (i3)
+###
 
 # Workspaces
 alt-1 = [
