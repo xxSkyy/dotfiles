@@ -135,11 +135,11 @@ alt-shift-ctrl-j = 'join-with down'
 alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
-alt-r = 'mode resize'
 
 ###
 # Workaround: Moved to skhdrc to work only on left alt
 ###
+# alt-r = 'mode resize'
 # alt-shift-c = 'reload-config'
 ###
 

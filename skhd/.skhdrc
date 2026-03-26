@@ -17,6 +17,7 @@ shift + lalt - l : aerospace move right
 
 shift + lalt - n : aerospace move-node-to-monitor next
 
+lalt-r : aerospace mode resize
 shift + lalt - c : aerospace reload-config
 
 
